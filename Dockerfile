@@ -1,7 +1,7 @@
 ARG APP_HOME=/home/node/app
 
 # build stage
-FROM node:14.17
+FROM node:alpine
 WORKDIR ${APP_HOME}
 
 
@@ -12,4 +12,5 @@ COPY . .
 # deploy stage
 
 EXPOSE 80
-CMD ["yarn start"]
+WORKDIR /src
+CMD ["node", "app.js"]

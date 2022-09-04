@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./swagger_output.json')
 
-process.env.SQLCONNECTSTRING = `mysql://root:user5678@20.69.109.56:3306/godev`
 var indexRouter = require('./routes/auth.route');
 var usersRouter = require('./routes/users.route');
 
