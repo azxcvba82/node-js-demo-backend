@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-react-nodejs-demo-backend
+  name: app-express-nodejs-demo-backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: react-nodejs-demo-backend
+      app: express-nodejs-demo-backend
   template:
     metadata:
       labels:
-        app: react-nodejs-demo-backend
+        app: express-nodejs-demo-backend
     spec:
       containers:
-      - name: react-nodejs-demo-backend
+      - name: express-nodejs-demo-backend
         image: docker.io/azxcvba81/henry_dev_nodejs_demo_express:latest
       tolerations:
       - key: "kubernetes.azure.com/scalesetpriority"

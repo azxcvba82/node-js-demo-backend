@@ -4,10 +4,12 @@ ARG APP_HOME=/home/node/app
 FROM node:14.17
 WORKDIR ${APP_HOME}
 
-COPY . ${APP_HOME}
+
+COPY package*.json ./
 RUN yarn install
+COPY . .
 
 # deploy stage
 
 EXPOSE 80
-CMD ["node", "./src/bin/www"]
+CMD ["yarn start"]
