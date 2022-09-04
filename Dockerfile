@@ -5,12 +5,11 @@ FROM node:alpine
 WORKDIR ${APP_HOME}
 
 
-COPY package*.json ./
-RUN yarn install
 COPY . .
+RUN yarn install
+
 
 # deploy stage
 
 EXPOSE 80
-WORKDIR /src
-CMD ["node", "app.js"]
+CMD "yarn" "start"
