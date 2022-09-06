@@ -88,7 +88,18 @@ class AuthController {
       } else {
         AuthModel.verifyEmail(decoded.email).then((result) => {
           console.log( `OK: decoded.email=[${decoded.email}]` );
-          res.send(decoded.email);
+
+          const jwtPayload = {
+            email: decoded.email,
+            role: 'user'
+          };
+          const date = new Date()
+          date.setTime(date.getTime() + (6 * 60 * 60 * 1000))
+          res.send({email: decoded.email, 
+                    token: jwt.sign(jwtPayload, JWTUtil.getJWTDefaultSecret(), JWTUtil.getJWTOptionsLogin()), 
+                    expiresAt: date.toUTCString(),
+                    emailVerify:true});
+        
         }).catch((err) => { return res.send(err); });
       }
     });
