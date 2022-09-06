@@ -217,7 +217,6 @@ class AuthController {
   
       }).catch((err) => { return res.send(err); });
   
-      res.send(result.data);
     })
     .catch(error => {
       res.status(400).send(error.toString());
