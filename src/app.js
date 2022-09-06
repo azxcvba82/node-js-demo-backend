@@ -34,6 +34,16 @@ app.use('/users', usersRouter);
 
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
+const corsWhiteLists ={
+  origin: ["http://localhost:3000/","http://localhost:80/","https://node-js-demo-api.azxcvba99.net/"]
+}
+
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", corsWhiteLists.origin);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
