@@ -92,6 +92,7 @@ router.post('/ssoLogin', validate(ssoValidation, {}, {}), function(req, res, nex
             access_token: "",
             state: ""
         }
+      }
   */
 });
 

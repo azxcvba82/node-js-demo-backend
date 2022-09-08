@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken');
 const JWTUtil = require('../util/jwt.util');
+const AuthModel = require('../model/auth.model');
 
 class JWTIntercepter {
 
@@ -24,6 +25,9 @@ class JWTIntercepter {
                         return res.sendStatus(403);
                     }
                 } else{
+                    const email = req.user.email; 
+                    AuthModel.updateSessionTime(email).then((result) => {
+                    });
                     next();
                 }
             });
