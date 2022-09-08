@@ -20,6 +20,8 @@ class AuthController {
       } else if(obj[0].fPassword !== req.body.password) {
         res.status(401).send('Password not valid');
       } else {
+        AuthModel.updateLoginTime(email).then((result) => {
+        });
         const jwtPayload = {
           email: obj[0].fEmail,
           role: obj[0].fEmailVerify === 'N' ? 'unVerifiedUser':'user'

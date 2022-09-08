@@ -5,7 +5,7 @@ const  CommonUtil = require('../util/common.util');
 class AuthModel {
 
    static findUser(email) {
-    const queryString = `SELECT fEmail, fPassword, fEmailVerify  FROM tNodeJSDemoMember WHERE fEmail = ? LIMIT 1 `;
+    const queryString = `SELECT fEmail, fPassword, fEmailVerify, fName  FROM tNodeJSDemoMember WHERE fEmail = ? LIMIT 1 `;
     const result = SQLUtil.runSQLQuery(CommonUtil.getSQLConnectString(),queryString,email);
     return result;
   }
@@ -25,6 +25,18 @@ class AuthModel {
    static verifyEmail(email) {
     const SQLString = `UPDATE tNodeJSDemoMember SET fEmailVerify = 'Y' WHERE fEmail = ? `;
     const result = SQLUtil.runSQLExec(CommonUtil.getSQLConnectString(),SQLString,email);
+    return result;
+  }
+
+  static updateLoginTime(email) {
+    const SQLString = `UPDATE tNodeJSDemoMember SET fLastLoginTime = ?, fLoginCount=fLoginCount+1 WHERE fEmail = ? `;
+    const result = SQLUtil.runSQLExec(CommonUtil.getSQLConnectString(),SQLString,new Date().toISOString().substring(0,19).replace('T',' '),email);
+    return result;
+  }
+
+  static updateSessionTime(email) {
+    const SQLString = `UPDATE tNodeJSDemoMember SET fSessionTime = ? WHERE fEmail = ? `;
+    const result = SQLUtil.runSQLExec(CommonUtil.getSQLConnectString(),SQLString,new Date().toISOString().substring(0,19).replace('T',' '),email);
     return result;
   }
 
