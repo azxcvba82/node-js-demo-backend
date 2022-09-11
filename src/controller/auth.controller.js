@@ -117,7 +117,7 @@ class AuthController {
     CommonModel.getSysConfig(ssoKey).then((result) => {
       const obj = Array.from(result);
     
-      const redirectUri = "http://localhost/"
+      const redirectUri = "https://node-js-demo.azxcvba99.net/"
       const googleParams = new URL("https://accounts.google.com/o/oauth2/auth?");
     
       googleParams.searchParams.append("state", CommonUtil.base64Encode("google"));
