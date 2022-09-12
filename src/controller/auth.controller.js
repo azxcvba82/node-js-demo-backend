@@ -195,6 +195,9 @@ class AuthController {
                 }).catch((err) => { return res.send(err); });
                 }
 
+                AuthModel.updateLoginTime(email).then((result) => {
+                });
+
                 const jwtPayload = {
                   email: email,
                   role: 'user'
@@ -236,6 +239,9 @@ class AuthController {
             AuthModel.createUserSSO(email,userName).then((result) => {
         }).catch((err) => { return res.send(err); });
         }
+
+        AuthModel.updateLoginTime(email).then((result) => {
+        });
 
         const jwtPayload = {
           email: email,
