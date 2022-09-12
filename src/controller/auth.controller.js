@@ -194,7 +194,17 @@ class AuthController {
                     AuthModel.createUserSSO(email,userName).then((result) => {
                 }).catch((err) => { return res.send(err); });
                 }
-                res.send(userName+' '+email);
+
+                const jwtPayload = {
+                  email: email,
+                  role: 'user'
+                };
+                const date = new Date()
+                date.setTime(date.getTime() + (6 * 60 * 60 * 1000))
+                res.send({email: email, 
+                          token: jwt.sign(jwtPayload, JWTUtil.getJWTDefaultSecret(), JWTUtil.getJWTOptionsLogin()), 
+                          expiresAt: date.toUTCString(),
+                          emailVerify:true});
 
               }).catch((err) => { return res.send(err); });
 
@@ -226,7 +236,17 @@ class AuthController {
             AuthModel.createUserSSO(email,userName).then((result) => {
         }).catch((err) => { return res.send(err); });
         }
-        res.send(userName+' '+email);
+
+        const jwtPayload = {
+          email: email,
+          role: 'user'
+        };
+        const date = new Date()
+        date.setTime(date.getTime() + (6 * 60 * 60 * 1000))
+        res.send({email: email, 
+                  token: jwt.sign(jwtPayload, JWTUtil.getJWTDefaultSecret(), JWTUtil.getJWTOptionsLogin()), 
+                  expiresAt: date.toUTCString(),
+                  emailVerify:true});
   
       }).catch((err) => { return res.send(err); });
   
