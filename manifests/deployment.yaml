@@ -15,6 +15,11 @@ spec:
       containers:
       - name: express-nodejs-demo-backend
         image: docker.io/azxcvba81/henry_dev_nodejs_demo_express:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: PORT
+          value: "80"
       tolerations:
       - key: "kubernetes.azure.com/scalesetpriority"
         operator: "Exists"
