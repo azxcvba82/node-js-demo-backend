@@ -35,7 +35,7 @@ app.use('/users', usersRouter);
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 const corsWhiteLists ={
-  origin: ["http://localhost:3000/","http://localhost:80/","https://node-js-demo-api.azxcvba99.net/"]
+  origin: ["http://localhost:3000/","http://localhost:80/","https://node-js-demo-api.azxcvba99.net/","https://app-express-nodejs-demo-backend.azurewebsites.net/"]
 }
 
 app.all('*', function(req, res, next) {
