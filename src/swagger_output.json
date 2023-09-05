@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "node-js-demo-api.azxcvba99.net",
+  "host": "app-express-nodejs-demo-backend.azurewebsites.net",
   "basePath": "/",
   "tags": [
     {
